@@ -288,6 +288,32 @@ def getWriter(char):
         return nop
     return writers[ord(char)-65]
 
+def smiley(x,y):
+    hLine(x,y+1,5)
+    vLine(x+1,y,5)
+    vLine(x+1,y+6,5)
+    hLine(x+6,y+1,5)
+    point(x+2,y+2)
+    point(x+2,y+4)
+    point(x+4,y+1)
+    point(x+4,y+5)
+    point(x+5,y+2)
+    point(x+5,y+3)
+    point(x+5,y+4)
+    
+def sady(x,y):
+    hLine(x,y+1,5)
+    vLine(x+1,y,5)
+    vLine(x+1,y+6,5)
+    hLine(x+6,y+1,5)
+    point(x+2,y+2)
+    point(x+2,y+4)
+    point(x+5,y+1)
+    point(x+5,y+5)
+    point(x+4,y+2)
+    point(x+4,y+3)
+    point(x+4,y+4)
+
 def writeC(char,x,y):
     writer=getWriter(char)
     if writer:
@@ -310,6 +336,17 @@ def scrollText(text, pos):
 (ROWS,COLS)=initPortrait()
 #(ROWS,COLS)=initLandscape()
 
-scrollText("Hello World !",3)
+def text(text, pos=3):
+    scrollText(text,pos)
+    Draw(rows, columns, statesList,0.2)
+    
+def smileys():
+    addState(lambda: smiley(2,1))
+    addState(lambda:sady(2,1))
+    Draw(rows, columns, statesList,1)
+    
 
-Draw(rows, columns, statesList,0.1)
+smileys()
+#text("SALUT")
+
+
